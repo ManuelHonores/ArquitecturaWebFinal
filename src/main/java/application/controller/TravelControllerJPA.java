@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import application.entity.Travel;
 import application.repository.TravelRepository;
 
-
-
 @RestController
 @RequestMapping("travels")
 public class TravelControllerJPA {

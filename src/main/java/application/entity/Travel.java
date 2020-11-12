@@ -3,14 +3,7 @@ package application.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "travels")
@@ -23,6 +16,9 @@ public class Travel {
 	private String name;
 	@Column
 	private String destinity_city;
+	// Agrego continente para hacer el reporte por zona geográfica, en este caso, por continente.
+	@Column
+	private String continent;
 	@Column
 	private Date start_date;
 	@Column
@@ -30,8 +26,8 @@ public class Travel {
 	@Column
 	private String description;
 
-	@ManyToMany
-	private List<User> users;
+	@ManyToOne
+	private User user;
 
 	@OneToMany(mappedBy = "travel")
 	private List<Plan> plans;
@@ -64,6 +60,10 @@ public class Travel {
 	public void setDestinity_city(String destinity_city) {
 		this.destinity_city = destinity_city;
 	}
+
+	public String getContinent() { return continent; }
+
+	public void setContinent(String continent) { this.continent = continent; }
 
 	public Date getStart_date() {
 		return start_date;

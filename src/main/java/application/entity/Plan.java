@@ -22,14 +22,20 @@ public class Plan {
 	protected String name;
 	@Column
 	protected String description;
+	@Column
+	protected boolean finished;
+	@Column
+	protected String country;
 	
 	@ManyToOne
 	private Travel travel;
 	
-	public Plan(String name, String description) {
+	public Plan(String name, String description, boolean finished, String country) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.finished = finished;
+		this.country = country;
 	}
 	
 	public Plan() {

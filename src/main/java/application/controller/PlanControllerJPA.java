@@ -22,7 +22,7 @@ import application.repository.PlanRepository;
 @RequestMapping("plans")
 public class PlanControllerJPA {
 
-    @Qualifier("userRepository")
+    @Qualifier("planRepository")
     @Autowired
     private final PlanRepository repository;
 
