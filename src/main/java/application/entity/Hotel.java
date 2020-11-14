@@ -19,52 +19,94 @@ public class Hotel extends Plan{
 	@Column
 	private String name;
 	@Column
-	private Date start_date;
+	private Integer day_start_date;
 	@Column
-	private Date end_date;
-	
+	private Integer month_start_date;
+	@Column
+	private Integer year_start_date;
+	@Column
+	private Integer day_end_date;
+	@Column
+	private Integer month_end_date;
+	@Column
+	private Integer year_end_date;
+
+	public Hotel(String name, String description, boolean finished, String country, Integer day_start_date, Integer month_start_date, Integer year_start_date, Integer day_end_date, Integer month_end_date, Integer year_end_date) {
+		this.name = name;
+		this.description = description;
+		this.finished = finished;
+		this.country = country;
+		this.day_start_date = day_start_date;
+		this.month_start_date = month_start_date;
+		this.year_start_date = year_start_date;
+		this.day_end_date = day_end_date;
+		this.month_end_date = month_end_date;
+		this.year_end_date = year_end_date;
+	}
+
 	public Hotel() {
-		
 	}
 
-	public Hotel(String name, Date start_date, Date end_date) {
-		super();
-		this.name = name;
-		this.start_date = start_date;
-		this.end_date = end_date;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getStart_date() {
-		return start_date;
-	}
-
-	public void setStart_date(Date start_date) {
-		this.start_date = start_date;
-	}
-
-	public Date getEnd_date() {
-		return end_date;
-	}
-
-	public void setEnd_date(Date end_date) {
-		this.end_date = end_date;
-	}
-
+	@Override
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	@Override
+	public String getName() {
+		return name;
 	}
-	
-	
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getDay_start_date() {
+		return day_start_date;
+	}
+
+	public void setDay_start_date(Integer day_start_date) {
+		this.day_start_date = day_start_date;
+	}
+
+	public Integer getMonth_start_date() {
+		return month_start_date;
+	}
+
+	public void setMonth_start_date(Integer month_start_date) {
+		this.month_start_date = month_start_date;
+	}
+
+	public Integer getYear_start_date() {
+		return year_start_date;
+	}
+
+	public void setYear_start_date(Integer year_start_date) {
+		this.year_start_date = year_start_date;
+	}
+
+	public Integer getDay_end_date() {
+		return day_end_date;
+	}
+
+	public void setDay_end_date(Integer day_end_date) {
+		this.day_end_date = day_end_date;
+	}
+
+	public Integer getMonth_end_date() {
+		return month_end_date;
+	}
+
+	public void setMonth_end_date(Integer month_end_date) {
+		this.month_end_date = month_end_date;
+	}
+
+	public Integer getYear_end_date() {
+		return year_end_date;
+	}
+
+	public void setYear_end_date(Integer year_end_date) {
+		this.year_end_date = year_end_date;
+	}
 }

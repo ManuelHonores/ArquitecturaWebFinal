@@ -19,13 +19,21 @@ public class Fly extends Plan{
 	@Column
 	private String company;
 	@Column
-	private Date departure_date;
+	private Integer day_departure_date;
+	@Column
+	private Integer month_departure_date;
+	@Column
+	private Integer year_departure_date;
 	@Column
 	private int departure_hour;
 	@Column
 	private String departure_airport;
 	@Column
-	private Date return_date;
+	private Integer day_return_date;
+	@Column
+	private Integer month_return_date;
+	@Column
+	private Integer year_return_date;
 	@Column
 	private int return_hour;
 	@Column
@@ -36,24 +44,25 @@ public class Fly extends Plan{
 	private String info_airplane;
 	@Column
 	private int scale_time;
-	
-	public Fly(String company, Date departure_date, int departure_hour, String departure_airport, Date return_date,
-			int return_hour, String return_airport, String reserve_code, String info_airplane, int scale_time) {
-		super();
+
+	public Fly(){}
+
+	public Fly(String name, String description, boolean finished, String country, String company, Integer day_departure_date, Integer month_departure_date, Integer year_departure_date, int departure_hour, String departure_airport, Integer day_return_date, Integer month_return_date, Integer year_return_date, int return_hour, String return_airport, String reserve_code, String info_airplane, int scale_time) {
+		super(name, description, finished, country);
 		this.company = company;
-		this.departure_date = departure_date;
+		this.day_departure_date = day_departure_date;
+		this.month_departure_date = month_departure_date;
+		this.year_departure_date = year_departure_date;
 		this.departure_hour = departure_hour;
 		this.departure_airport = departure_airport;
-		this.return_date = return_date;
+		this.day_return_date = day_return_date;
+		this.month_return_date = month_return_date;
+		this.year_return_date = year_return_date;
 		this.return_hour = return_hour;
 		this.return_airport = return_airport;
 		this.reserve_code = reserve_code;
 		this.info_airplane = info_airplane;
 		this.scale_time = scale_time;
-	}
-	
-	public Fly() {
-		
 	}
 
 	public String getCompany() {
@@ -64,12 +73,28 @@ public class Fly extends Plan{
 		this.company = company;
 	}
 
-	public Date getDeparture_date() {
-		return departure_date;
+	public Integer getDay_departure_date() {
+		return day_departure_date;
 	}
 
-	public void setDeparture_date(Date departure_date) {
-		this.departure_date = departure_date;
+	public void setDay_departure_date(Integer day_departure_date) {
+		this.day_departure_date = day_departure_date;
+	}
+
+	public Integer getMonth_departure_date() {
+		return month_departure_date;
+	}
+
+	public void setMonth_departure_date(Integer month_departure_date) {
+		this.month_departure_date = month_departure_date;
+	}
+
+	public Integer getYear_departure_date() {
+		return year_departure_date;
+	}
+
+	public void setYear_departure_date(Integer year_departure_date) {
+		this.year_departure_date = year_departure_date;
 	}
 
 	public int getDeparture_hour() {
@@ -88,12 +113,28 @@ public class Fly extends Plan{
 		this.departure_airport = departure_airport;
 	}
 
-	public Date getReturn_date() {
-		return return_date;
+	public Integer getDay_return_date() {
+		return day_return_date;
 	}
 
-	public void setReturn_date(Date return_date) {
-		this.return_date = return_date;
+	public void setDay_return_date(Integer day_return_date) {
+		this.day_return_date = day_return_date;
+	}
+
+	public Integer getMonth_return_date() {
+		return month_return_date;
+	}
+
+	public void setMonth_return_date(Integer month_return_date) {
+		this.month_return_date = month_return_date;
+	}
+
+	public Integer getYear_return_date() {
+		return year_return_date;
+	}
+
+	public void setYear_return_date(Integer year_return_date) {
+		this.year_return_date = year_return_date;
 	}
 
 	public int getReturn_hour() {
@@ -135,13 +176,4 @@ public class Fly extends Plan{
 	public void setScale_time(int scale_time) {
 		this.scale_time = scale_time;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 }
