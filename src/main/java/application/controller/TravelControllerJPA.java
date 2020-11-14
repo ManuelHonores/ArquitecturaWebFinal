@@ -3,6 +3,7 @@ package application.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.entity.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,7 +48,7 @@ public class TravelControllerJPA {
         repository.deleteById(id);
     }
 
-    @PutMapping("/{id}")
+    /* @PutMapping("/{id}")
     Travel replaceTravel(@RequestBody Travel newTravel, @PathVariable Long id) {
 
         return repository.findById(id).map(travel -> {
@@ -62,5 +63,13 @@ public class TravelControllerJPA {
             newTravel.setId(id);
             return repository.save(newTravel);
         });
-    }
+    } */
+
+   /* @GetMapping("/{id}")
+    public List<Plan> getPlansForTravel(@PathVariable long id) {
+        List<Plan> lista = new ArrayList<Plan>();
+        lista = repository.findPlansForTravel();
+        System.out.println(lista);
+        return lista;
+    } */
 }

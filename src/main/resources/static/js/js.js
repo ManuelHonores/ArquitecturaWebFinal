@@ -29,17 +29,26 @@ function addViaje() {
 
 function addVuelo() {
     let vuelo = {
-        company: document.getElementById("nombreViaje").value,
-        departure_date: document.getElementById("ciudadDestino").value,
-        departure_hour: document.getElementById("continenteDestino").value,
-        departure_airport: document.getElementById("fechaInicio").value,
-        return_date: document.getElementById("fechaFin").value,
-        return_hour: document.getElementById("fechaFin").value,
-        return_airport: document.getElementById("descripcion").value,
-        reserve_code: document.getElementById("descripcion").value,
-        info_airplane: document.getElementById("descripcion").value,
-        scale_time: document.getElementById("descripcion").value,
+        company: document.getElementById("...").value,
+        departure_date: document.getElementById("...").value,
+        departure_hour: document.getElementById("...").value,
+        departure_airport: document.getElementById("...").value,
+        return_date: document.getElementById("...").value,
+        return_hour: document.getElementById("...").value,
+        return_airport: document.getElementById("...").value,
+        reserve_code: document.getElementById("...").value,
+        info_airplane: document.getElementById("...").value,
+        scale_time: document.getElementById("...").value,
     }
+    fetch('flies/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(vuelo)
+    })
+        .then(response => {
+            getVuelos();
+        })
+        .catch(error => console.log(error));
 }
 
 // Obtener viajes, tanto los futuros como los realizados.
@@ -63,7 +72,7 @@ function getViajes() {
         .then(response => response.json())
         .then(resp => {
             for (const elem of resp) {
-                agregarEnTablas(elem.name, elem.destinity_city, elem.start_date, elem.end_date, elem.description);
+                agregarViajesEnTablas(elem.name, elem.destinity_city, elem.start_date, elem.end_date, elem.description);
                 //agregarPlanesEnTabla(elem.plans);
             }
             getPlanes();
@@ -94,9 +103,14 @@ function getVuelos() {
         .catch(error => console.log(error));
 }
 
+function agregarViajesEnTablas(name, destinity_city, start_date, end_date, description) {
+    let listFuturos = document.getElementById("tablaViajesFuturos");
+    let listRealizados = document.getElementById("tablaViajesRealizados");
+}
+
 function agregarPlanesEnTabla(planes) {
-    let listFuturos = document.getElementById("subPlanesFuturos");
-    let listRealizados = document.getElementById("subPlanesRealizados");
+    //let listFuturos = document.getElementById("tablaViajesFuturos");
+    //let listRealizados = document.getElementById("tablaViajesRealizados");
     let fechaActual = new Date();
     listFuturos.innerHTML = "";
     listRealizados.innerHTML = "";
@@ -112,4 +126,6 @@ function agregarPlanesEnTabla(planes) {
     }
 }
 
-function agregarVuelosEnTabla(company, departure_date, departure_hour, departure_airport, return_date, return_hour, return_airport, elem.reserve_code, elem.info_airplane, elem.scale_time);
+function agregarVuelosEnTabla(company, departure_date, departure_hour, departure_airport, return_date, return_hour, return_airport, reserve_code, info_airplane, scale_time) {
+
+}

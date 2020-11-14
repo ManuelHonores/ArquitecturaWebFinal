@@ -48,7 +48,7 @@ public class PlanControllerJPA {
         repository.deleteById(id);
     }
 
-    @PutMapping("/{id}")
+    /* @PutMapping("/{id}")
     Plan replacePlan(@RequestBody Plan newPlan, @PathVariable Long id) {
 
         return repository.findById(id).map(plan -> {
@@ -60,5 +60,5 @@ public class PlanControllerJPA {
             newPlan.setId(id);
             return repository.save(newPlan);
         });
-    }
+    } */
 }

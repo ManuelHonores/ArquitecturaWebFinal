@@ -1,5 +1,6 @@
 package application.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,17 @@ public class Travel {
 	@Column
 	private String continent;
 	@Column
-	private Date start_date;
+	private Integer day_start_date;
 	@Column
-	private Date end_date;
+	private Integer month_start_date;
+	@Column
+	private Integer year_start_date;
+	@Column
+	private Integer day_end_date;
+	@Column
+	private Integer month_end_date;
+	@Column
+	private Integer year_end_date;
 	@Column
 	private String description;
 
@@ -32,17 +41,31 @@ public class Travel {
 	@OneToMany(mappedBy = "travel")
 	private List<Plan> plans;
 
-	public Travel(String name, String destinity_city, Date start_date, Date end_date, String description) {
-		super();
-		this.name = name;
-		this.destinity_city = destinity_city;
-		this.start_date = start_date;
-		this.end_date = end_date;
-		this.description = description;
+	public Travel() {
 	}
 
-	public Travel() {
+	public Travel(String name, String destinity_city, String continent, Integer day_start_date, Integer month_start_date, Integer year_start_date, Integer day_end_date, Integer month_end_date, Integer year_end_date, String description, User user) {
+		this.name = name;
+		this.destinity_city = destinity_city;
+		this.continent = continent;
+		this.day_start_date = day_start_date;
+		this.month_start_date = month_start_date;
+		this.year_start_date = year_start_date;
+		this.day_end_date = day_end_date;
+		this.month_end_date = month_end_date;
+		this.year_end_date = year_end_date;
+		this.description = description;
+		this.user = user;
+		this.plans = new ArrayList<Plan>();
+		// TENGO QUE PASAR UNA LISTA DE PLANES???
+	}
 
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -61,24 +84,60 @@ public class Travel {
 		this.destinity_city = destinity_city;
 	}
 
-	public String getContinent() { return continent; }
-
-	public void setContinent(String continent) { this.continent = continent; }
-
-	public Date getStart_date() {
-		return start_date;
+	public String getContinent() {
+		return continent;
 	}
 
-	public void setStart_date(Date start_date) {
-		this.start_date = start_date;
+	public void setContinent(String continent) {
+		this.continent = continent;
 	}
 
-	public Date getEnd_date() {
-		return end_date;
+	public Integer getDay_start_date() {
+		return day_start_date;
 	}
 
-	public void setEnd_date(Date end_date) {
-		this.end_date = end_date;
+	public void setDay_start_date(Integer day_start_date) {
+		this.day_start_date = day_start_date;
+	}
+
+	public Integer getMonth_start_date() {
+		return month_start_date;
+	}
+
+	public void setMonth_start_date(Integer month_start_date) {
+		this.month_start_date = month_start_date;
+	}
+
+	public Integer getYear_start_date() {
+		return year_start_date;
+	}
+
+	public void setYear_start_date(Integer year_start_date) {
+		this.year_start_date = year_start_date;
+	}
+
+	public Integer getDay_end_date() {
+		return day_end_date;
+	}
+
+	public void setDay_end_date(Integer day_end_date) {
+		this.day_end_date = day_end_date;
+	}
+
+	public Integer getMonth_end_date() {
+		return month_end_date;
+	}
+
+	public void setMonth_end_date(Integer month_end_date) {
+		this.month_end_date = month_end_date;
+	}
+
+	public Integer getYear_end_date() {
+		return year_end_date;
+	}
+
+	public void setYear_end_date(Integer year_end_date) {
+		this.year_end_date = year_end_date;
 	}
 
 	public String getDescription() {
@@ -89,12 +148,24 @@ public class Travel {
 		this.description = description;
 	}
 
-	public Long getId() {
-		return id;
+	public User getUser() {
+		return user;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Plan> getPlans() {
+		return plans;
+	}
+
+	public void setPlans(List<Plan> plans) {
+		this.plans = plans;
+	}
+
+	public void addPlan(Plan p) {
+		this.plans.add(p);
 	}
 
 }

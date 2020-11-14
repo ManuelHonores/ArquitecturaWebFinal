@@ -3,6 +3,7 @@ package application.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.entity.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,4 +62,55 @@ public class UserControllerJPA {
             return repository.save(newUser);
         });
     }
+
+    @GetMapping("/finished/{id}")
+    List<Plan> reportPlansFinished(@PathVariable long id) {
+        List<Plan> listFinished = new ArrayList<Plan>();
+        listFinished = repository.reportPlansFinished(id);
+        return listFinished;
+    }
+
+    @GetMapping("/nofinished/{id}")
+    List<Plan> reportPlansNoFinished(@PathVariable long id) {
+        List<Plan> listNoFinished = new ArrayList<Plan>();
+        listNoFinished = repository.reportPlansNoFinished(id);
+        return listNoFinished;
+    }
+
+    @GetMapping("/plans/{id}")
+    List<Plan> reportPlans(@PathVariable long id) {
+        List<Plan> plansUser = new ArrayList<Plan>();
+        plansUser = repository.reportPlans(id);
+        return plansUser;
+    }
+
+    @PostMapping("/{id}")
+    List<Plan> reportDates(@PathVariable long id, @RequestBody Integer day_start, Integer month_start, Integer year_start, Integer day_end, Integer month_end, Integer year_end) {
+        List<Plan> reportDates = new ArrayList<Plan>();
+        reportDates = repository.reportDates(day_start, month_start, year_start, day_end, month_end, year_end, id);
+        return reportDates;
+    }
+
+    @GetMapping("/{continent}/{id}")
+    List<Plan> reportZone(@PathVariable String continent, long id) {
+        List<Plan> reportZone = new ArrayList<Plan>();
+        reportZone = repository.reportZone(continent, id);
+        return reportZone;
+    }
+
+    // Compañia
+    @GetMapping("/masviajes")
+    List<User> reportUserTravels() {
+        List<User> reportUserTravels = new ArrayList<User>();
+        reportUserTravels = repository.reportUserTravels();
+        return reportUserTravels;
+    }
+
+    @GetMapping("/zonageografica")
+    List<String> reportUserContinent() {
+        List<String> reportUserContinent = new ArrayList<String>();
+        reportUserContinent = repository.reportUserContinent();
+        return reportUserContinent;
+    }
+
 }
